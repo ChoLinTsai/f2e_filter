@@ -10,7 +10,7 @@ class Index extends Component {
     return (
       <div className={style.indexStyle}>
 
-        <h1>This is a H1</h1>
+        <h1>This is a H1 after updated</h1>
 
       </div>
     );
