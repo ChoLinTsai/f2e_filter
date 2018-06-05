@@ -11,10 +11,10 @@ class Index extends Component {
       <div className={style.indexStyle}>
 
         <h1>This is a H1 after updated</h1>
-
+        
       </div>
     );
-  }
+  } 
 }
 
 
