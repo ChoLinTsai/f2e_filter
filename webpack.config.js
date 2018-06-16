@@ -1,13 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const isProd = process.env.NODE_ENV === 'production';
-
-const cssDev = require('./webpack.dev.js');
-const cssProd = require('./webpack.prod.js');
-
-
-const cssConfig = isProd ? cssProd : cssDev;
 
 module.exports = {
   output: {
@@ -26,7 +20,19 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: cssConfig
+        use: [
+          'style-loader',
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: './src/resources/*.scss'
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpg|gif|mp4|ogg|svg|woff|woff2|ttf|eot)$/,
@@ -50,14 +56,13 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      hash: true,
       template: './src/index.html',
-      filename: './index.html'
+      filename: 'index.html',
     }),
-    new ExtractTextPlugin({
-      filename: './css/[name].css',
-      disable: !isProd,
-      allChunks: true
-    })
+    new MiniCssExtractPlugin({
+      filename: 'style.[contenthash].css',
+    }),
   ]
 }
 
