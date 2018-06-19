@@ -1,0 +1,28 @@
+.mainTopBlock {
+  @include gridCR(1,2,1,2);
+  display: grid;
+  grid-template-columns:
+    100%;
+  grid-template-rows:
+    50px 50px;
+  
+  h5 {
+    span {
+      color: #9013FE;
+      font-weight: 700;
+    }
+  } 
+
+  .tagBlock {
+    @include gridCR(1,2,2,3);
+
+    .chip {
+      background: rgba(156, 39, 176, 0);
+      border: 1px solid #9013FE;
+      color: #9013FE;
+      font-size: 1rem;
+      font-weight: 700;
+      font-style: italic;
+    }
+  }
+}

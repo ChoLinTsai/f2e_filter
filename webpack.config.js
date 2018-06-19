@@ -20,9 +20,20 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
+        use: isProd ? [
           'style-loader',
           MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: './src/resources/*.scss'
+            }
+          }
+        ] : [
+          'style-loader',
           'css-loader',
           'postcss-loader',
           'sass-loader',
@@ -35,18 +46,31 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|gif|mp4|ogg|svg|woff|woff2|ttf|eot)$/,
+        test: /\.(png|jpg|gif|svg)$/i,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'assets/'
+              publicPath: './img/',
+              outputPath: 'img/',
             }
           },
           {
-            loader: "image-webpack-loader"
+            loader: 'image-webpack-loader'
           }
+        ]
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
+        use: [
+          { loader: 'file-loader',
+						options: {
+							name: '[name].[ext]',
+							publicPath: './fonts/',
+							outputPath: 'fonts/'
+						}
+					}
         ]
       },
     ]
@@ -61,7 +85,7 @@ module.exports = {
       filename: 'index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
+      filename: 'style.css',
     }),
   ]
 }

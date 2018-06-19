@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './components/index.scss';
+import App from './components/App/App';
 
 
 
@@ -10,7 +10,7 @@ class Index extends Component {
     return (
       <div className="indexStyle">
 
-        <h1>This is a H1 after updated</h1>
+        <App />
         
       </div>
     );

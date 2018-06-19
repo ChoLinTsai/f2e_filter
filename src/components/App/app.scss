@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  padding: 0;
+}
+
+.appBlock {
+  width: 100vw;
+  height: 100%;
+  background: mistyrose;
+  
+    .bodyWrapper.container {
+      width: 1200px;
+      height: 953px;
+      background: #e4e4e4;
+      display: grid;
+      grid-template-columns:
+        338px 862px;
+      grid-template-rows:
+        953px;
+
+    }
+}

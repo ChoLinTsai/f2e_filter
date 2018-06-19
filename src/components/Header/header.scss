@@ -1,0 +1,50 @@
+$headerBg: #7828B4;
+
+.headerBlock {
+  @include gridCR(1,3,1,2);
+  width: 100vw;
+  height: 92px;
+  background: $headerBg;
+  
+  .container {
+    width: 1200px;
+    height: 92px;
+    display: grid;
+    grid-template-columns:
+      338px 862px;
+    grid-template-rows:
+      92px;
+
+    .logoBlock {
+      @include gridCR(1,2,1,2);
+      @include flex;
+      background: $headerBg;
+      color: #ffffff;
+      
+      h3 {
+        font-weight: 900;
+      }
+    }
+  
+    .searchBlock {
+      @include gridCR(2,3,1,2);
+      @include flex(flex-start);
+      background: $headerBg;
+      padding-left: 2.875rem;
+
+      nav {
+        width: 388px;
+        
+        #search {
+
+          &::placeholder {
+            font-style: italic;
+            color: rgba(255,255,255,0.50);
+          }
+        }
+      }
+    }
+
+  }
+  
+}
