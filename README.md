@@ -1,3 +1,9 @@
+## 2018/6/20
+
+Project filter phase 1 finished
+
+
+
 ## 2018/6/16
 
 configuration updated

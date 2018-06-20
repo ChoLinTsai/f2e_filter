@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
@@ -78,6 +80,12 @@ module.exports = {
   devServer: {
     stats: "errors-only",
   },
+  optimization: {
+    minimizer: [
+      new OptimizeCssAssetsPlugin({}),
+      new UglifyJsPlugin({}),
+    ]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       hash: true,
@@ -86,6 +94,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'style.css',
+
     }),
   ]
 }
